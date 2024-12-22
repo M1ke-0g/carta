@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roiner Maldonado - Perfil Profesional | EmprendeLink</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2ecc71;
+            --accent-color: #f39c12;
+            --success-color: #27ae60;
+            --danger-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --text-color: #2c3e50;
+            --background-color: #f5f7fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.4rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+        }
+
+        .logo img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        main {
+            margin-top: 80px;
+            padding: 40px 0;
+        }
+
+        .profile-header {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-picture {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 40px;
+            border: 4px solid var(--primary-color);
+        }
+
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info h1 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .profile-info h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat {
+            background-color: var(--light-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .profile-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .widget {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .widget h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--light-color);
+            padding-bottom: 10px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .timeline {
+            list-style-type: none;
+        }
+
+        .timeline li {
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline li:before {
+            content: '';
+            width: 15px;
+            height: 15px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 5px;
+        }
+
+        .timeline li:after {
+            content: '';
+            width: 2px;
+            height: calc(100% + 15px);
+            background-color: var(--light-color);
+            position: absolute;
+            left: 6.5px;
+            top: 5px;
+            z-index: -1;
+        }
+
+        .timeline li:last-child:after {
+            display: none;
+        }
+
+        .timeline h4 {
+            font-size: 1.1rem;
+            color: var(--dark-color);
+        }
+
+        .timeline p {
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .contact-info {
+            list-style-type: none;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            width: 30px;
+            color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-picture {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="fotos/logo2.png">
+                <img src="fotos/logo2.png" alt="EmprendeLink Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#dashboard">Inicio</a></li>
+                <li><a href="#solicitudes.html">Red</a></li>
+                <li><a href="#resources">Recursos</a></li>
+                <li><a href="#events">Eventos</a></li>
+                <li><a href="#mentorship">Mentoría</a></li>
+                <li><a href="#profil.html">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="profile-header">
+            <div class="profile-picture">
+                <img src="fotos/carlos.jpg" alt="Roiner Maldonado">
+            </div>
+            <div class="profile-info">
+                <h1>Roiner Maldonado</h1>
+                <h2>CEO & Fundador de Innovatec</h2>
+                <div class="profile-stats">
+                    <span class="stat">500+ Conexiones</span>
+                    <span class="stat">3 Startups Exitosas</span>
+                    <span class="stat">10+ Años de Experiencia</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="profile-content">
+            <div class="main-content">
+                <section class="widget">
+                    <h3>Sobre mí</h3>
+                    <p>Emprendedor apasionado con más de una década de experiencia en el sector tecnológico. Especializado en la creación y desarrollo de startups innovadoras que resuelven problemas reales. Mi enfoque se centra en la innovación sostenible y el liderazgo transformador.</p>
+                </section>
+
+                <section class="widget">
+                    <h3>Experiencia</h3>
+                    <ul class="timeline">
+                        <li>
+                            <h4>CEO & Fundador - Innovatec</h4>
+                            <p>2018 - Presente</p>
+                            <p>Liderando una startup de tecnología limpia que desarrolla soluciones innovadoras para la gestión de residuos urbanos.</p>
+                        </li>
+                        <li>
+                            <h4>Co-fundador - TechRevolution</h4>
+                            <p>2014 - 2018</p>
+                            <p>Co-fundé y dirigí una aceleradora de startups tecnológicas, ayudando a más de 50 empresas a crecer y obtener financiación.</p>
+                        </li>
+                        <li>
+                            <h4>Director de Innovación - GreenTech</h4>
+                            <p>2010 - 2014</p>
+                            <p>Lideré el departamento de innovación en una empresa líder en energías renovables, desarrollando nuevas tecnologías solares.</p>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <aside>
+                <section class="widget">
+                    <h3>Habilidades</h3>
+                    <div class="skills">
+                        <span class="skill">Liderazgo</span>
+                        <span class="skill">Innovación</span>
+                        <span class="skill">Estrategia Empresarial</span>
+                        <span class="skill">Desarrollo Sostenible</span>
+                        <span class="skill">Gestión de Equipos</span>
+                        <span class="skill">Captación de Fondos</span>
+                        <span class="skill">Marketing Digital</span>
+                        <span class="skill">Análisis de Datos</span>
+                    </div>
+                </section>
+
+                <section class="widget">
+                    <h3>Logros</h3>
+                    <ul>
+                        <li>Premio al Emprendedor del Año 2022</li>
+                        <li>Patente internacional en tecnología de reciclaje</li>
+                        <li>Conferenciante principal en TEDx Innovation</li>
+                        <li>Autor del bestseller "Innovación Sostenible"</li>
+                    </ul>
+                </section>
+
+                <section class="widget">
+                    <h3>Contacto</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> juan@innovatec.com</li>
+                        <li><i class="fas fa-phone"></i> +34 600 123 456</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Madrid, España</li>
+                        <li><i class="fab fa-linkedin"></i> /in/juanemprendedor</li>
+                        <li><i class="fab fa-twitter"></i> @juaninnova</li>
+                    </ul>
+                </section>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 EmprendeLink. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

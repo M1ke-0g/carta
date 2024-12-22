@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Pagos - nexusGrowth</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            z-index: 10;
+        }
+
+        h2 {
+            color: #1f2937;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        /* Estilos del formulario */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            color: #4b5563;
+            font-size: 0.875rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        input[type="text"], input[type="number"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+        }
+
+        /* Botón de pago */
+        button {
+            background-color: #1f2937;
+            color: #ffffff;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.25rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #4f46e5;
+        }
+
+        /* Métodos de pago alternativos */
+        .alt-payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .alt-payment-methods button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            color: #4b5563;
+            border: 1px solid #d1d5db;
+            padding: 0.75rem;
+            font-weight: 600;
+        }
+
+        .alt-payment-methods button:hover {
+            background-color: #f3f4f6;
+        }
+
+        .alt-payment-methods button svg {
+            margin-right: 0.5rem;
+        }
+
+        /* Divisor */
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #d1d5db;
+        }
+
+        .divider span {
+            padding: 0 0.5rem;
+            color: #6b7280;
+        }
+
+        /* Onda inferior */
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+
+        .wave svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 150px;
+        }
+
+        .wave .shape-fill {
+            fill: #1f2937;
+        }
+
+        /* Estilos para el logo */
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo svg {
+            width: 5rem;
+            height: 5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor del portal de pagos -->
+    <div class="container">
+        <div class="logo">
+            <!-- Puedes añadir aquí el logo de la empresa -->
+            <img src="fotos/logo solo.png" alt="Logo Empresa">
+        </div>
+        <h2>Portal de Pagos - nexusGrowth</h2>
+
+        <!-- Formulario de pago -->
+        <form>
+            <label for="card-number">Número de Tarjeta</label>
+            <input type="number" id="card-number" placeholder="1234 5678 9012 3456">
+
+            <label for="expiry-date">Fecha de Vencimiento</label>
+            <input type="text" id="expiry-date" placeholder="MM/AA">
+
+            <label for="cvv">CVV</label>
+            <input type="number" id="cvv" placeholder="123">
+
+            <label for="name-on-card">Nombre en la Tarjeta</label>
+            <input type="text" id="name-on-card" placeholder="Nombre completo">
+
+            <button type="submit">Pagar Ahora</button>
+        </form>
+
+        <div class="divider">
+            <span>O elige otro método de pago</span>
+        </div>
+
+        <!-- Métodos de pago alternativos -->
+        <div class="alt-payment-methods">
+            <button>
+                <img src="https://via.placeholder.com/20" alt="Logo PayPal">
+                Pagar con PayPal
+            </button>
+            <button>
+                <img src="https://via.placeholder.com/20" alt="Logo Transferencia">
+                Pagar con Transferencia Bancaria
+            </button>
+        </div>
+    </div>
+
+    <!-- Onda inferior decorativa -->
+    <div class="wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M985.66,56.75C906.28,98.3,817.15,117.56,729.11,105.15C636.78,91.97,552.91,49.29,460.33,53.8C394.57,57.05,332.09,94.13,266.71,112.84C202.49,131.3,126.72,130.94,58.67,113.14C25.19,104.4,0,83.06,0,61.88L0,0L1200,0L1200,27.24C1138.47,36.23,1052.83,15.21,985.66,56.75Z" class="shape-fill"></path>
+        </svg>
+    </div>
+</body>
+</html>

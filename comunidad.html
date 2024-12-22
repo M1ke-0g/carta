@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusGrowth - Plataforma para Emprendedores y Empresarios</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2ecc71;
+            --accent-color: #f39c12;
+            --success-color: #27ae60;
+            --danger-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --text-color: #2c3e50;
+            --background-color: #f5f7fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.4rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+        }
+
+        .logo img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        main {
+            margin-top: 120px;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .sidebar {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .widget {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .widget:hover {
+            transform: translateY(-5px);
+        }
+
+        .widget h2 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--light-color);
+            padding-bottom: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .profile-summary img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 4px solid var(--light-color);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-summary img:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-summary h3 {
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        .profile-summary p {
+            color: var(--text-color);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .task-list {
+            list-style: none;
+        }
+
+        .task-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            background-color: var(--light-color);
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .task-list li:hover {
+            background-color: #dfe6e9;
+        }
+
+        .task-list li input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .calendar {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 2px;
+        }
+
+        .calendar th, .calendar td {
+            border: none;
+            padding: 10px;
+            text-align: center;
+            background-color: var(--light-color);
+            border-radius: 5px;
+        }
+
+        .calendar th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .user-post {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--light-color);
+            padding-bottom: 20px;
+        }
+
+        .user-post:last-child {
+            border-bottom: none;
+        }
+
+        .user-post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .user-post-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid var(--light-color);
+        }
+
+        .user-post-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-post-author {
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+
+        .user-post-date {
+            font-size: 0.8em;
+            color: #7f8c8d;
+        }
+
+        .user-post-content {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .user-post-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .user-post-actions button {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .user-post-actions button:hover {
+            color: var(--secondary-color);
+        }
+
+        .create-post textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid var(--light-color);
+            border-radius: 10px;
+            resize: vertical;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .create-post textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .news-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-color);
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-item h3 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .news-item p {
+            font-size: 0.9em;
+            color: var(--text-color);
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="fotos/logo2.png">
+                <img src="fotos/logo2.png" alt="EmprendeLink Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#dashboard">Inicio</a></li>
+                <li><a href="#solicitudes.html">Red</a></li>
+                <li><a href="#resources">Recursos</a></li>
+                <li><a href="#events">Eventos</a></li>
+                <li><a href="#mentorship">Mentoría</a></li>
+                <li><a href="#profil.html">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main class="container">
+        <aside class="sidebar">
+            <div class="widget profile-summary">
+                <img src="fotos/carlos.jpg" alt="Foto de perfil">
+                <h3>Roiner Maldonado</h3>
+                <p>CEO & Fundador de Innovatec</p>
+                <a href="#" class="btn">Editar Perfil</a>
+            </div>
+            <div class="widget">
+                <h2>Tareas Pendientes</h2>
+                <ul class="task-list">
+                    <li><input type="checkbox"> Actualizar plan de negocios</li>
+                    <li><input type="checkbox"> Contactar inversor potencial</li>
+                    <li><input type="checkbox"> Revisar propuesta de marketing</li>
+                    <li><input type="checkbox"> Preparar presentación para conferencia</li>
+                </ul>
+            </div>
+        </aside>
+
+        <section class="content">
+            <div class="widget create-post">
+                <h2>Compartir con la comunidad</h2>
+                <textarea placeholder="¿Qué novedades tienes para compartir?"></textarea>
+                <button class="btn">Publicar</button>
+            </div>
+
+            <div class="widget">
+                <h2>Publicaciones de la Comunidad</h2>
+                <div class="user-post">
+                    <div class="user-post-header">
+                        <img src="fotos/luisa.jpg" alt="Avatar" class="user-post-avatar">
+                        <div class="user-post-info">
+                            <span class="user-post-author">María Rodríguez</span>
+                            <span class="user-post-date">Hace 2 horas</span>
+                        </div>
+                    </div>
+                    <div class="user-post-content">
+                        <p>¡Gran noticia! Acabamos de cerrar una ronda de inversión de $500,000 para nuestra startup de energía renovable. Gracias a todos por el apoyo constante. #EmprendimientoVerde</p>
+                    </div>
+                    <div class="user-post-actions">
+                        <button><i class="fas fa-thumbs-up"></i> Me gusta</button>
+                        <button><i class="fas fa-comment"></i> Comentar</button>
+                        <button><i class="fas fa-share"></i> Compartir</button>
+                    </div>
+                </div>
+
+                <div class="user-post">
+                    <div class="user-post-header">
+                        <img src="fotos/negro.jpg" alt="Avatar" class="user-post-avatar">
+                        <div class="user-post-info">
+                            <span class="user-post-author">Carlos Mendoza</span>
+                            <span class="user-post-date">Ayer</span>
+                        </div>
+                    </div>
+                    <div class="user-post-content">
+                        <p>¡Lanzamos nuestro primer producto al mercado! Después de meses de trabajo duro, finalmente nuestro software de gestión empresarial está disponible. Si alguien está interesado, contáctenme para una demostración. #TechStartups</p>
+                    </div>
+                    <div class="user-post-actions">
+                        <button><i class="fas fa-thumbs-up"></i> Me gusta</button>
+                        <button><i class="fas fa-comment"></i> Comentar</button>
+                        <button><i class="fas fa-share"></i> Compartir</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <div class="widget">
+                <h2>Noticias Relevantes</h2>
+                <div class="news-item">
+                    <h3>La Startup XYZ recibe inversión de $1M</h3>
+                    <p>XYZ ha anunciado que recibió una inversión de $1M para expandir sus operaciones en América Latina...</p>
+                </div>
+                <div class="news-item">
+                    <h3>Conferencia Internacional de Innovación</h3>
+                    <p>No te pierdas la próxima conferencia internacional donde se abordarán los desafíos de la innovación tecnológica...</p>
+                </div>
+            </div>
+
+            <div class="widget

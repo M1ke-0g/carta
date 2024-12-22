@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>skill Shere - Plataforma Profesional para Empresarios e Inversionistas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2a4365;
+            --accent-color: #ecc94b;
+            --text-color: #2d3748;
+            --light-text-color: #718096;
+            --background-color: #f7fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #ffffff;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .card p {
+            color: var(--light-text-color);
+        }
+
+        .testimonial {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+            float: left;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            color: var(--light-text-color);
+        }
+
+        .price-table {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .price-option {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .price-option:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .price-option h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: var(--secondary-color);
+        }
+
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .feature-list li {
+            margin-bottom: 15px;
+            color: var(--light-text-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price-table {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .price-option {
+                width: 100%;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <img src="fotos/logo2.png" alt="NexusGrowth Logo">
+                <div class="nav-links">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#servicios">Servicios</a>
+                    <a href="#expertos">Expertos</a>
+                    <a href="#testimonios">Testimonios</a>
+                    <a href="#precios">Precios</a>
+                    <a href="comunidad.html">Comunidad</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="container">
+                <h1>Potencia tu Éxito Empresarial</h1>
+                <p>Conecta con profesionales de élite, obtén asesoramiento estratégico y accede a oportunidades de inversión exclusivas en nuestra plataforma de alto nivel.</p>
+                
+                <a href="registro.html" class="cta-button">Comienza tu viaje hacia el éxito</a>
+            </div>
+        </section>
+
+        <section id="servicios" class="section">
+            <div class="container">
+                <h2>Servicios Exclusivos</h2>
+                <div class="grid">
+                    <div class="card">
+                        <img src="fotos/viejo.jpeg" alt="Red de Élite">
+                        <h3>Red de Élite</h3>
+                        <p>Acceso exclusivo a una red de empresarios e inversionistas de alto nivel.</p>
+                    </div>
+                    <div class="card">
+                        <img src="fotos/caras.jpeg" alt="Mentoría Estratégica">
+                        <h3>Mentoría Estratégica</h3>
+                        <p>Sesiones personalizadas con líderes empresariales y expertos en la industria.</p>
+                    </div>
+                    <div class="card">
+                        <img src="fotos/invercion.jpeg" alt="Oportunidades de Inversión">
+                        <h3>Oportunidades de Inversión</h3>
+                        <p>Acceso prioritario a rondas de financiación y proyectos de alto potencial.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="expertos" class="section">
+            <div class="container">
+                <h2>Nuestros Expertos</h2>
+                <div class="grid">
+                    <div class="card">
+                        <img src="fotos/carlos.jpg" alt="Experto Carlos Rodríguez">
+                        <h3>Carlos Rodríguez</h3>
+                        <p>CEO de TechInnovate y mentor en estrategias de crecimiento acelerado.</p>
+                    </div>
+                    <div class="card">
+                        <img src="fotos/luisa.jpg" alt="Experta María Gómez">
+                        <h3>María Gómez</h3>
+                        <p>Inversora ángel con más de 50 startups exitosas en su portafolio.</p>
+                    </div>
+                    <div class="card">
+                        <img src="fotos/negro.jpg" alt="Experto Javier López">
+                        <h3>Javier López</h3>
+                        <p>Experto en finanzas corporativas y estrategias de expansión internacional.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonios" class="section">
+            <div class="container">
+                <h2>Testimonios de Éxito</h2>
+                <div class="testimonial">
+                    <img src="fotos/luisa.jpg" alt="Testimonio de Ana Martínez">
+                    <p>"Gracias a NexoNegocios, logré conectar con inversores clave que impulsaron mi startup al siguiente nivel. La calidad de la red y el asesoramiento son incomparables." - Ana Martínez, CEO de EcoTech Solutions</p>
+                </div>
+                <div class="testimonial">
+                    <img src="fotos/carlos.jpg" alt="Testimonio de Roberto Sánchez">
+                    <p>"Como inversor, valoro enormemente la cuidadosa selección de proyectos y emprendedores en NexoNegocios. He encontrado oportunidades únicas que han superado mis expectativas." - Roberto Sánchez, Socio en Venture Capital Innovations</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="precios" class="section">
+            <div class="container">
+                <h2>Planes de Membresía</h2>
+                <div class="price-table">
+                    <div class="price-option">
+                        <h3>Plan Profesional</h3>
+                        <div class="price">$499/mes</div>
+                        <ul class="feature-list">
+                            <li>Acceso completo a la red de élite</li>
+                            <li>2 sesiones de mentoría mensual</li>
+                            <li>Participación en eventos exclusivos</li>
+                            <li>Herramientas de análisis empresarial</li>
+                        </ul>
+                        <a href="pago.html" class="cta-button">Seleccionar Plan</a>
+                    </div>
+                    <div class="price-option">
+                        <h3>Plan Ejecutivo</h3>
+                        <div class="price">$999/mes</div>
+                        <ul class="feature-list">
+                            <li>Todo lo incluido en el Plan Profesional</li>
+                            <li>Acceso VIP a rondas de inversión</li>
+                            <li>Mentoría semanal personalizada</li>
+                            <li>Consultoría estratégica trimestral</li>
+                            <li>Perfil destacado para inversores</li>
+                        </ul>
+                        <a href="pago.html" class="cta-button">Seleccionar Plan</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div

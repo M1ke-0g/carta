@@ -1,0 +1,196 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #83b5ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: #34495e;
+}
+
+/* Contenedor principal */
+.payment-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(47, 0, 255, 0.603);
+    padding: 50px 40px;
+    width: 450px;
+    max-width: 100%;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.payment-container:hover {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Título */
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Descripción */
+.description {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+/* Formulario de pago */
+.payment-form {
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    color: #34495e;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #dcdfe3;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #2c3e50;
+    background-color: #f7f9fc;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #3498db;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.2);
+}
+
+input:active, select:active {
+    border-color: #2980b9;
+}
+
+/* Organización de elementos en línea */
+.inline {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inline div {
+    width: 48%;
+}
+
+/* Botón de envío */
+.submit-btn {
+    background-color: #2980b9;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 30px;
+    text-transform: uppercase;
+}
+
+.submit-btn:hover {
+    background-color: #1f6391;
+}
+
+/* Identificación del tipo de tarjeta */
+.card-type {
+    margin-top: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #7f8c8d;
+}
+
+.visa {
+    color: #3498db;
+}
+
+.mastercard {
+    color: #e74c3c;
+}
+
+/* Opciones de pago */
+.payment-options {
+    margin-top: 35px;
+}
+
+.payment-options p {
+    color: #34495e;
+    font-size: 1rem;
+}
+
+.payment-logo {
+    width: 60px;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+    opacity: 0.8;
+}
+
+.payment-logo:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* Estilos de mensajes de error */
+input.error {
+    border-color: #e74c3c;
+    background-color: #fbe3e3;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Detalles adicionales */
+select {
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+/* Optimización para móviles */
+@media screen and (max-width: 768px) {
+    .payment-container {
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    .inline {
+        flex-direction: column;
+    }
+
+    .inline div {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
